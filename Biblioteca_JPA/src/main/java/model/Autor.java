@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CollectionId;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,15 +33,24 @@ public class Autor {
     @Column(nullable = false)
     Date fechaNacimiento;
 
+
+    // Un autor tiene muchos libros
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Libro> libros = new ArrayList<>();
+
     public Autor() {
 
     }
+    
 
     public  Autor(String nombre, String nacionalidad, Date fechaNacimiento) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
     }
+
+
+
 
 
 
