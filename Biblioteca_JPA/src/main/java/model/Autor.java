@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CollectionId;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Autor {
 
     //Fecha de nacimiento
     @Column(nullable = false)
-    Date fechaNacimiento;
+    LocalDate fechaNacimiento;
 
 
     // Un autor tiene muchos libros
@@ -41,9 +42,9 @@ public class Autor {
     public Autor() {
 
     }
-    
 
-    public  Autor(String nombre, String nacionalidad, Date fechaNacimiento) {
+
+    public Autor(String nombre, String nacionalidad, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;

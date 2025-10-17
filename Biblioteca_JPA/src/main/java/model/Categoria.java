@@ -1,9 +1,9 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /*Autor → Libro: @OneToMany (un autor tiene muchos libros)
 Libro → Autor: @ManyToOne (cada libro tiene un autor)
@@ -18,5 +18,14 @@ public class Categoria {
     private Long id;
 
     String nombre;
+
+    @ManyToMany(mappedBy = "categoria")
+    private Set<Libro> libros = new HashSet<>();
+
+    public Categoria() {}
+
+    public Categoria(String nombre) {
+        this.nombre = nombre;
+    }
 
 }
