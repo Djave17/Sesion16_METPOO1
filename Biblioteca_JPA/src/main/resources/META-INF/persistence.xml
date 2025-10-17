@@ -5,5 +5,7 @@
              version="3.2">
     <persistence-unit name="default">
 
+        <class>entities.autor</class>
+
     </persistence-unit>
 </persistence>
