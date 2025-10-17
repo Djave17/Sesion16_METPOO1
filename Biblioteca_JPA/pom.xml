@@ -28,6 +28,11 @@
             <version>4.0.5</version>
         </dependency>
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>9.0.1.Final</version>
@@ -55,6 +60,7 @@
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
         </dependency>
+
     </dependencies>
 
     <build>

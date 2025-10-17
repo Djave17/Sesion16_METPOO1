@@ -3,7 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
              version="3.2">
-    <persistence-unit name="bibliotecaDB" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="bibliotecaJPA" transaction-type="RESOURCE_LOCAL">
         <class>model.Autor</class>
         <class>model.Categoria</class>
         <class>model.Libro</class>
@@ -15,11 +15,22 @@
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="Dsanchez2303"/>
 
+            <property name="hibernate.validator.message_interpolator"
+                      value="org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator"/>
+
+
             <!-- Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Desactiva la integración de Bean Validation -->
+            <property name="jakarta.persistence.validation.mode" value="none"/>
+            <!-- Y evita que HV se auto-registre en Hibernate -->
+            <property name="hibernate.validator.apply_to_ddl" value="false"/>
+            <property name="hibernate.validator.autoregister_listeners" value="false"/>
+
 
         </properties>
 
