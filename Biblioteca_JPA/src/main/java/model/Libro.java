@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -49,4 +50,7 @@ public class Libro {
     }
 
 
+    public Collection<Categoria> getCategorias() {
+        return categoria;
+    }
 }
