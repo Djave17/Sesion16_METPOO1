@@ -3,56 +3,38 @@ package model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CollectionId;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Table(name = "autor")
+@Getter @Setter
 public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //Nombre
-    @Column(nullable = false)
-    String nombre;
+    @Column(nullable = false, length = 120)
+    private String nombre;
 
+    @Column(length = 80)
+    private String nacionalidad;
 
-    //Nacionalidad
-    @Column(nullable = false)
-    String nacionalidad;
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
 
-
-    //Fecha de nacimiento
-    @Column(nullable = false)
-    LocalDate fechaNacimiento;
-
-
-    // Un autor tiene muchos libros
+    // Lado inverso; el dueño es Libro.autor
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Libro> libros = new ArrayList<>();
 
-    public Autor() {
-
-    }
-
+    public Autor() {}
 
     public Autor(String nombre, String nacionalidad, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
     }
-
-
-
-
-
-
-
 }

@@ -2,42 +2,30 @@ package model;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-/*Autor → Libro: @OneToMany (un autor tiene muchos libros)
-Libro → Autor: @ManyToOne (cada libro tiene un autor)
-Libro ↔ Categoria: @ManyToMany (libros pueden tener varias categorías y viceversa)
-*/
 @Entity
-
+@Table(name = "categoria", uniqueConstraints = @UniqueConstraint(columnNames = "nombre"))
 public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String nombre;
+    @Column(nullable = false, length = 80)
+    private String nombre;
 
-    @ManyToMany(mappedBy = "categoria")
+
+    @ManyToMany(mappedBy = "categorias")
     private Set<Libro> libros = new HashSet<>();
 
     public Categoria() {}
 
-    public Categoria(String nombre) {
-        this.nombre = nombre;
-    }
+    public Categoria(String nombre) { this.nombre = nombre; }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Collection<Libro> getLibros() {
-        return libros;
-    }
-
-    public Object getNombre() {
-        return nombre;
-    }
+    public Long getId() { return id; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public Set<Libro> getLibros() { return libros; }
 }

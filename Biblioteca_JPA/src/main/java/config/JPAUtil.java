@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class JPAUtil {
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("demo1"); //↑ nombre de la unidad de persistencia alineado
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("bibliotecaDB");
 
     public static EntityManager getEntityManager() {
         return emf.createEntityManager();

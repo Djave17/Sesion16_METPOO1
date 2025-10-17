@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+import static run.Menu.iniciar;
+
 public class Main {
 
     static EntityManager em = JPAUtil.getEntityManager();
@@ -24,7 +26,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        iniciar();
     }
 
 

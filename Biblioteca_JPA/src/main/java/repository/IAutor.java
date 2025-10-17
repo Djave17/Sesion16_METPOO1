@@ -7,6 +7,9 @@ public interface IAutor {
     Autor guardar(Autor autor);
     List<Autor> listar();
     Autor buscarPorId(Long id);
+    //Autor actualizar(Autor autor);
+    //void eliminar(Long id);
+
 
 
 }
